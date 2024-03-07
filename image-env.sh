@@ -6,4 +6,4 @@ export PROJECT_ID=rust-jupyter-kernel
 export NOTEBOOK=${PROJECT_ID}-notebook
 export RUNTIME=${PROJECT_ID}-runtime
 
-export VERSION="0.0.2"
+export VERSION="0.0.1"
