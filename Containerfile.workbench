@@ -1,5 +1,5 @@
 # FROM registry.access.redhat.com/ubi8:8.9-1107.1705420509
-FROM quay.io/modh/odh-pytorch-notebook@sha256:b733dd081d51d55d96513638aca8820765ffa2dae875a37ed8f0f0528a5ecfc7
+FROM quay.io/modh/odh-pytorch-notebook:v2-2023b-20240301
 
 USER root
 
