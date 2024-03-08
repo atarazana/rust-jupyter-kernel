@@ -14,18 +14,23 @@ RUN rustup default stable
 
 # Install evcxr_jupyter
 RUN cargo install evcxr_jupyter
-RUN evcxr_jupyter --install
+# RUN evcxr_jupyter --install
 
 COPY requirements-elyra.txt ./
 COPY requirements.txt ./
 
-RUN pip install pip==22.3.1 setuptools==65.3.0
+RUN pip install --no-cache-dir pip==22.3.1 setuptools==65.3.0
 
 RUN pip install --no-cache-dir -r requirements.txt && \
     pip install --no-cache-dir -r requirements-elyra.txt && \
-    chmod -R g+w /opt/app-root/lib/python3.9/site-packages && \
+    pip install --no-cache-dir --upgrade jupyter_core jupyter_client && \
+    chmod -R g+w /opt/app-root/lib/python3.9/site-packages
+
+# RUN pip install --upgrade jupyter_core jupyter_client && \
+RUN evcxr_jupyter --install && \
+    mv /opt/app-root/src/.local/share/jupyter/kernels/rust /opt/app-root/share/jupyter/kernels/ && \
     fix-permissions /opt/app-root -P
 
-RUN pip install --upgrade jupyter_core jupyter_client
+# RUN ls -al /opt/app-root/src/.local/share/jupyter/
 
 
